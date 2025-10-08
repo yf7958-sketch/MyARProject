@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>温州设计集团 - AR建筑预览</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    <style>
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; }
+        model-viewer { width: 100%; height: 100%; --ar-button-display: none; } /* 隐藏默认AR按钮，用我们自己的 */
+        #ar-button {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #007aff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <model-viewer id="building" 
+                  src="building_ar.glb" alt="建筑模型"
+                  camera-controls
+                  touch-action="pan-y"
+                  ar
+                  ar-modes="webxr scene-viewer quick-look"
+                  ar-scale="fixed"> </model-viewer>
+
+    <button id="ar-button" onclick="document.querySelector('#building').activateAR()">在您的空间中查看</button>
+
+</body>
+</html>
